@@ -1,5 +1,20 @@
 # 전기화학분석 (Electrochemical Analysis) — 개요
 
+<span class="theory-group-label practical">실무이론</span>
+
+## 영역 구성
+
+```text
+08 전기화학분석 (Electrochemical Analysis)
+├── 01_cv                   Randles-Sevcik / 가역성 판정 / scan rate
+├── 02_gcd_rate             C-rate / rate capability / formation cycle / ICE
+├── 03_eis_practical        측정 셋업 / fitting workflow / KK 검증 / pitfall
+├── 04_gitt_pitt            Weppner-Huggins / 펄스/이완 / D_Li 추출
+├── 05_three_electrode      RE 선택 / Luggin / pseudo-RE 위험
+├── 06_lsv_tafel            안정성 윈도우 / Tafel slope / j₀ 추정
+└── 07_cycling_protocols    formation / calendar / accelerated / BMS 윈도우
+```
+
 ## 1. 영역의 위치
 
 06번 작동이론(`battery operation`)이 "왜 이런 현상이 보이나"를 다룬다면, 08번 전기화학분석(electrochemical analysis)은 그 현상을 **어떻게 측정하고 어떻게 해석할 것인가**를 다룬다. 즉 06이 분극(polarization)·노화(aging)·계면(interface)의 메커니즘을 설명한다면, 08은 CV·GCD·EIS·GITT/PITT·LSV 같은 측정 기법(technique)이 **무엇을 가정하고**, **어떤 조건에서 신뢰할 만하며**, **추출된 값이 실제로 무엇을 의미하는가**를 정리한다.

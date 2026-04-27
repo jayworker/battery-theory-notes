@@ -1,5 +1,20 @@
 # 소재분석 (Materials Characterization)
 
+<span class="theory-group-label practical">실무이론</span>
+
+## 영역 구성
+
+```text
+07 소재분석 (Materials Characterization)
+├── 01_xrd                  Bragg / Rietveld / I003/I104 / Scherrer
+├── 02_sem_eds              SE/BSE / 단면 / EDS mapping / FIB tomography
+├── 03_tem                  HRTEM 격자 fringe / STEM-HAADF / SAED / EELS
+├── 04_xps                  binding energy / charge correction / depth profile
+├── 05_raman_ftir           D/G band / ROCO₂Li / Li₂CO₃ / ATR vs Transmission
+├── 06_bet_psa              N₂ 등온선 / BET 식 / laser scattering / D50
+└── 07_icp_tga              ICP-MS/OES / TM 용출 정량 / TGA-DSC
+```
+
 ## 개요
 
 배터리 연구에서 "어떤 소재인지"를 정량적으로 말하려면 결국 분석 데이터를 들고 와야 한다. XRD 패턴 한 장으로 결정상이 결정되고, XPS 한 번으로 SEI 조성이 정량되며, ICP-MS 결과로 사이클 후 양극에서 빠져나간 전이금속(transition metal) 양이 ppb 단위까지 잡힌다. 본 영역은 실험실에서 일상적으로 쓰는 소재분석 기법을 — 원리, 셋업, 정량 절차, 한계 — 까지 묶어 다룬다.

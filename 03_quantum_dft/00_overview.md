@@ -1,5 +1,18 @@
 # DFT/양자화학 (Quantum Chemistry and Density Functional Theory)
 
+<span class="theory-group-label foundation">기초이론</span>
+
+## 영역 구성
+
+```text
+03 DFT/양자화학 (Quantum Chemistry and DFT)
+├── 01_quantum_basics       Schrödinger / 파동함수 / Slater / Hartree-Fock
+├── 02_dft_foundations      Hohenberg-Kohn / Kohn-Sham / SCF / 변분
+├── 03_exchange_correlation LDA / GGA(PBE) / hybrid(HSE) / DFT+U
+├── 04_practical_dft        pseudopotential / k-point / cutoff / 수렴 진단
+└── 05_dft_battery          전압 계산 / NEB 이주장벽 / 형성 에너지 / Bader
+```
+
 ## 개요
 
 밀도범함수 이론(Density Functional Theory, DFT)은 현대 배터리 소재 연구에서 가장 널리 사용되는 제1원리(first-principles) 계산 방법이다. 전자 구조를 기반으로 결정 구조의 안정성, 반응 전압, 이온 이동 장벽(migration barrier)을 예측할 수 있어, 실험과 상호보완적으로 소재 설계에 활용된다.

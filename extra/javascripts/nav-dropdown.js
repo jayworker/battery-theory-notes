@@ -1,9 +1,9 @@
 /* ============================================================
-   nav-dropdown.js
-   상단 탭(기초이론 / 실무이론)에 호버 드롭다운 추가.
-   - 기초이론 hover → 01~05 영역 링크
-   - 실무이론 hover → 06~09 영역 링크
-   - Material instant navigation 호환 (페이지 전환 시 재부착)
+   nav-dropdown.js — 클릭 기반 드롭다운 (호버보다 안정적)
+   - 기초이론 / 실무이론 탭을 클릭하면 dropdown 토글
+   - 다른 영역 클릭 시 자동 닫힘
+   - 모바일/터치 환경 호환
+   - Material instant navigation 호환
    ============================================================ */
 (function () {
   "use strict";
@@ -25,32 +25,65 @@
   };
 
   function getSiteRoot() {
-    // Material의 logo 링크가 사이트 루트를 가리킨다 (GitHub Pages project page 호환).
-    const logo = document.querySelector(".md-header__button.md-logo");
+    const logo = document.querySelector(".md-header__button.md-logo, a.md-header__button[href]");
     if (logo && logo.getAttribute("href")) {
       return logo.getAttribute("href").replace(/\/$/, "");
     }
-    return "";
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    return parts.length > 0 ? "/" + parts[0] : "";
+  }
+
+  function findGroupForLink(linkEl) {
+    // 정확 매칭 + 부분 매칭(아이콘/공백 등 대응)
+    const txt = (linkEl.textContent || "").trim();
+    if (NAV_GROUPS[txt]) return [txt, NAV_GROUPS[txt]];
+    for (const k in NAV_GROUPS) {
+      if (txt.includes(k)) return [k, NAV_GROUPS[k]];
+    }
+    // md-ellipsis 안의 텍스트도 시도
+    const inner = linkEl.querySelector(".md-ellipsis");
+    if (inner) {
+      const t = (inner.textContent || "").trim();
+      if (NAV_GROUPS[t]) return [t, NAV_GROUPS[t]];
+    }
+    return null;
   }
 
   function clearExisting() {
     document.querySelectorAll(".tab-dropdown").forEach(el => el.remove());
     document.querySelectorAll(".md-tabs__item.has-dropdown").forEach(el => {
-      el.classList.remove("has-dropdown");
+      el.classList.remove("has-dropdown", "is-open");
+    });
+  }
+
+  function closeAll() {
+    document.querySelectorAll(".md-tabs__item.has-dropdown.is-open").forEach(el => {
+      el.classList.remove("is-open");
     });
   }
 
   function attachDropdowns() {
+    // Idempotent guard — 이미 모든 group에 dropdown이 부착되어 있으면 wipe 안 함.
+    // setTimeout 재시도가 발화해도 사용자 .is-open 상태 보존.
+    const expectedGroups = Object.keys(NAV_GROUPS).length;
+    const alreadyAttached = document.querySelectorAll(
+      ".md-tabs__item.has-dropdown .tab-dropdown"
+    ).length;
+    if (alreadyAttached >= expectedGroups) {
+      return;
+    }
+
     clearExisting();
     const root = getSiteRoot();
     const items = document.querySelectorAll(".md-tabs__item");
+    let attached = 0;
 
     items.forEach(item => {
-      const link = item.querySelector(".md-tabs__link");
+      const link = item.querySelector(".md-tabs__link, a");
       if (!link) return;
-      const text = link.textContent.trim();
-      const groupItems = NAV_GROUPS[text];
-      if (!groupItems) return;
+      const found = findGroupForLink(link);
+      if (!found) return;
+      const groupItems = found[1];
 
       item.classList.add("has-dropdown");
 
@@ -59,26 +92,60 @@
       panel.setAttribute("role", "menu");
 
       groupItems.forEach(function (entry) {
-        const label = entry[0];
-        const path = entry[1];
         const a = document.createElement("a");
         a.className = "tab-dropdown__item";
         a.setAttribute("role", "menuitem");
-        a.href = root + "/" + path;
-        a.textContent = label;
+        a.href = root + "/" + entry[1];
+        a.textContent = entry[0];
         panel.appendChild(a);
       });
 
       item.appendChild(panel);
+
+      // 클릭 시 토글 — 탭 자체의 페이지 이동 막음
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const wasOpen = item.classList.contains("is-open");
+        closeAll();
+        if (!wasOpen) item.classList.add("is-open");
+      });
+
+      attached++;
     });
+
+    if (window.console) {
+      console.log("[nav-dropdown] attached:", attached, "/", items.length, "tabs");
+    }
   }
 
-  // Material instant navigation: 페이지 전환마다 재부착.
-  if (typeof document$ !== "undefined" && document$.subscribe) {
-    document$.subscribe(attachDropdowns);
-  } else if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", attachDropdowns);
-  } else {
+  // 외부 클릭 시 닫기
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".md-tabs__item.has-dropdown")) closeAll();
+  });
+
+  // ESC로 닫기
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeAll();
+  });
+
+  function init() {
+    if (typeof window.document$ !== "undefined" &&
+        window.document$ &&
+        typeof window.document$.subscribe === "function") {
+      window.document$.subscribe(attachDropdowns);
+    }
     attachDropdowns();
   }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Material main.js의 document$ 노출이 늦는 환경 대응
+  setTimeout(attachDropdowns, 500);
+  setTimeout(attachDropdowns, 1500);
+  setTimeout(attachDropdowns, 3000);
 })();

@@ -1,5 +1,18 @@
 # 고체물리/화학 (Solid State Physics and Chemistry)
 
+<span class="theory-group-label foundation">기초이론</span>
+
+## 영역 구성
+
+```text
+02 고체물리/화학 (Solid State Physics and Chemistry)
+├── 01_crystal_structure   Bravais / 공간군 / Miller / rock-salt·layered·spinel·olivine
+├── 02_band_theory         Bloch / DOS / Fermi level / d-band / Jahn-Teller
+├── 03_defect_chemistry    점결함 / Kröger-Vink / Schottky·Frenkel / Brouwer
+├── 04_ionic_conduction    Arrhenius / hopping / Nernst-Einstein / Haven ratio
+└── 05_phase_diagrams      Gibbs 상규칙 / common tangent / 인터칼레이션 상도
+```
+
 ## 개요
 
 고체물리와 고체화학은 배터리 소재의 구조-물성 관계를 이해하는 근간이다. 리튬이온전지의 양극재(NMC, LFP 등), 음극재(흑연, Si), 고체전해질 모두 특정 결정 구조를 가지며, 이 구조가 이온 전도도, 전자 전도도, 상 안정성, 열적 안정성을 결정한다.

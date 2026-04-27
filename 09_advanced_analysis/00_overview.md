@@ -1,5 +1,20 @@
 # 고도분석 / Operando 운용 (Advanced & Operando Analysis Workflow)
 
+<span class="theory-group-label practical">실무이론</span>
+
+## 영역 구성
+
+```text
+09 고도분석 / Operando 운용 (Advanced & Operando Analysis)
+├── 01_operando_xrd         셀 디자인 / Mythen / synchrotron / waterfall plot
+├── 02_xas                  XANES (산화상태) / EXAFS (배위) / ATHENA·ARTEMIS
+├── 03_cryo_em              plunge-freeze / dose budget / dead Li / Cui group
+├── 04_dems_oems            isotope labeling / m/z 매핑 / O₂ vs CO₂
+├── 05_ssnmr                MAS / Knight shift / dead Li 정량 / 다핵종
+├── 06_afm_ecafm            EC-AFM / 두께 / 모듈러스 / KPFM
+└── 07_tof_sims             Bi₃⁺ vs Cs⁺ / depth profile / ⁶Li tracer
+```
+
 ## 개요
 
 이 영역(09)은 06 작동이론의 [`07_operando.md`](../06_battery_operation/07_operando.md)와 짝을 이루지만 시각이 다르다. 06이 **"어떤 기법이 어떤 현상을 보는가"**(현상 → 도구 매핑 카탈로그)라면, 09는 **"그 도구를 어떻게 운용하고 데이터를 해석하는가"**다 — 셀 디자인, 빔타임 신청, 시료 준비, raw 데이터 처리 워크플로우, fitting 절차까지가 본 영역의 범위다.

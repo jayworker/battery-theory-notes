@@ -1,5 +1,18 @@
 # 통계역학 (Statistical Mechanics)
 
+<span class="theory-group-label foundation">기초이론</span>
+
+## 영역 구성
+
+```text
+04 통계역학 (Statistical Mechanics)
+├── 01_ensembles            NVE / NVT / μVT / NPT / Boltzmann 분포
+├── 02_partition_function   Z / 자유에너지 / 열역학량 추출 / 격자 기체
+├── 03_lattice_models       Ising / mean field / Cluster Expansion / MC
+├── 04_phase_transitions    order parameter / 임계지수 / 보편성 / Landau
+└── 05_transport_theory     Onsager / FDT / Green-Kubo / Einstein 관계
+```
+
 ## 개요
 
 통계역학(statistical mechanics)은 미시적 자유도(원자, 분자의 위치와 운동량)로부터 거시적 열역학 함수(자유 에너지, 엔트로피, 압력)를 유도하는 이론 체계다. 배터리 소재 연구에서 통계역학은 여러 층위에서 필요하다: DFT 계산 결과로부터 유한 온도 상거동(phase behavior)을 예측하거나, 이온 확산의 온도 의존성을 이해하거나, 전극 재료의 삽입 전압의 SOC 의존성을 설명할 때 사용된다.

@@ -1,5 +1,21 @@
 # 배터리 작동이론 (Battery Operation Theory)
 
+<span class="theory-group-label practical">실무이론</span>
+
+## 영역 구성
+
+```text
+06 배터리 작동이론 (Battery Operation Theory)
+├── 01_voltage_curves      V-Q 곡선 / dQ/dV (ICA) / dV/dQ (DVA) / 히스테리시스
+├── 02_polarization        과전압 3성분 / GITT 확산계수 / EIS 등가회로
+├── 03_interface           SEI / CEI / Li 플레이팅 / 덴드라이트 / cross-talk
+├── 04_mechanochemistry    부피 변화 / 응력-확산 결합 / 입자 균열 / Si 음극
+├── 05_thermal             가역열 / 엔트로피 측정 / Bernardi / 열폭주
+├── 06_degradation         LLI / LAM / TM 용출 / cation mixing / 가스
+├── 07_operando            operando XRD/Raman/TEM/DEMS/NMR/XAS
+└── 08_anomalies           voltage fade / memory effect / anionic redox / knee
+```
+
 ## 개요
 
 배터리 작동이론 영역은 실제 리튬이온전지가 충방전 과정에서 어떤 전기화학적·물리화학적 현상을 겪는지를 종합적으로 다룬다. 단순히 개별 현상을 나열하는 것이 아니라, 전압 곡선의 모양이 왜 그런지(열역학), 과전압이 어떤 성분으로 분리되는지(동역학), 계면에서 무슨 일이 일어나는지(SEI/CEI), 기계적 열화와 열적 거동, 장기 노화 메커니즘, 그리고 이를 관찰하는 실험 기법까지 연결하여 이해하는 것이 목표다.

@@ -1,5 +1,18 @@
 # 수학 도구 (Mathematical Tools for Physical Sciences)
 
+<span class="theory-group-label foundation">기초이론</span>
+
+## 영역 구성
+
+```text
+05 수학 도구 (Mathematical Tools)
+├── 01_ode_pde              ODE / PDE / Green 함수 / 확산 방정식 / Poisson
+├── 02_linear_algebra       고유값 / 대각화 / Hückel / normal mode / SVD
+├── 03_complex_analysis     Cauchy / 잔차 / Laplace / Fourier / KK 관계
+├── 04_numerical_methods    FDM / FEM / Newton-Raphson / LM fitting
+└── 05_data_analysis        오차전파 / 회귀 / AIC/BIC / Bayesian / 신뢰구간
+```
+
 ## 개요
 
 수학 도구 영역은 전기화학·고체물리·DFT·통계역학의 이론을 다루는 데 필요한 수학적 언어를 정리한다. 독립적인 수학 강의를 대체하는 것이 아니라, 각 이론 영역에서 실제로 부딪히는 수학적 도구들을 "왜 이 방법을 쓰는가"의 맥락에서 재정리하는 것이 목표다.

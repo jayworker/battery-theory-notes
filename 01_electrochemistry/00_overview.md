@@ -1,5 +1,18 @@
 # 전기화학 기초 (Electrochemistry)
 
+<span class="theory-group-label foundation">기초이론</span>
+
+## 영역 구성
+
+```text
+01 전기화학 기초 (Electrochemistry)
+├── 01_thermodynamics      Gibbs / Nernst / 전극전위 / Pourbaix / 활동도
+├── 02_kinetics            Butler-Volmer / Tafel / Marcus / 교환전류
+├── 03_mass_transport      Fick / Nernst-Planck / Cottrell / Levich
+├── 04_double_layer        Helmholtz / GCS / Stern / Debye / PZC
+└── 05_eis_fundamentals    복소 임피던스 / Randles / Warburg / KK / DRT
+```
+
 ## 개요
 
 전기화학(electrochemistry)은 전기 에너지와 화학 에너지의 상호 변환을 다루는 학문이다. 이차전지는 본질적으로 전기화학 반응기이므로, 전극전위(electrode potential), 과전압(overpotential), 물질 전달(mass transport) 등의 개념을 정확히 이해하는 것이 배터리 연구의 출발점이 된다.
