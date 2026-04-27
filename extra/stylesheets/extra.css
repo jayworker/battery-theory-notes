@@ -1,0 +1,505 @@
+/* ============================================================
+   이차전지 이론 학습 노트 — 커스텀 스타일
+   ============================================================
+   - Pretendard 한글 친화 폰트
+   - 본문 가독성 (line-height 1.7, 좁은 본문 너비)
+   - 배터리 도메인 admonition 컬러 (cathode / anode / electrolyte / polarization)
+   - KaTeX 모바일 가로 스크롤
+   - 학습 추적 modal 스타일
+   ============================================================ */
+
+/* Pretendard 웹폰트 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+/* CSS 변수 override */
+:root {
+  --md-text-font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", Roboto, "Helvetica Neue", sans-serif;
+  --md-code-font: "JetBrains Mono", "Fira Code", "D2Coding", Consolas, monospace;
+
+  /* 배터리 도메인 secondary 컬러 */
+  --color-cathode: #c0392b;       /* 양극 — 적색 */
+  --color-anode: #2c3e50;         /* 음극 — 어두운 청회색 */
+  --color-electrolyte: #27ae60;   /* 전해질·이온 흐름 — 녹색 */
+  --color-polarization: #e67e22;  /* 분극·과전압 — 오렌지 */
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: #1a1a1a;
+  --md-default-bg-color: #ffffff;
+  --md-typeset-a-color: #1976d2;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color: #e6e6e6;
+  --md-default-bg-color: #0e1116;
+  --md-code-bg-color: #161b22;
+  --md-typeset-a-color: #64b5f6;
+}
+
+/* ============================================================
+   타이포그래피
+   ============================================================ */
+
+.md-typeset {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+  margin-top: 2.4em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.3em;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.8em;
+}
+
+.md-typeset h4 {
+  font-weight: 600;
+}
+
+/* 본문 너비 약간 좁힘 (한국어 가독성) */
+.md-content {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.md-content__inner {
+  margin-bottom: 2rem;
+}
+
+/* 단락 간 여백 살짝 더 (CJK) */
+.md-typeset p {
+  margin: 1em 0;
+}
+
+/* 리스트 항목 사이 간격 */
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.4em;
+}
+
+/* ============================================================
+   blockquote — 관련 개념 박스
+   ============================================================ */
+
+.md-typeset blockquote {
+  border-left: 4px solid var(--md-primary-fg-color);
+  background-color: var(--md-default-fg-color--lightest);
+  padding: 0.9em 1.2em;
+  margin: 1.4em 0;
+  border-radius: 0 4px 4px 0;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset blockquote p:first-child strong {
+  display: inline-block;
+  font-size: 0.95em;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 0.3em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset blockquote {
+  background-color: rgba(100, 181, 246, 0.08);
+}
+
+/* ============================================================
+   배터리 도메인 admonition 커스텀
+   사용 예: !!! cathode "양극 관련"
+   ============================================================ */
+
+.md-typeset .admonition.cathode,
+.md-typeset details.cathode {
+  border-color: var(--color-cathode);
+}
+.md-typeset .cathode > .admonition-title,
+.md-typeset .cathode > summary {
+  background-color: rgba(192, 57, 43, 0.1);
+  border-color: var(--color-cathode);
+}
+.md-typeset .cathode > .admonition-title::before,
+.md-typeset .cathode > summary::before {
+  background-color: var(--color-cathode);
+  -webkit-mask-image: var(--md-admonition-icon--note);
+          mask-image: var(--md-admonition-icon--note);
+}
+
+.md-typeset .admonition.anode,
+.md-typeset details.anode {
+  border-color: var(--color-anode);
+}
+.md-typeset .anode > .admonition-title,
+.md-typeset .anode > summary {
+  background-color: rgba(44, 62, 80, 0.1);
+  border-color: var(--color-anode);
+}
+.md-typeset .anode > .admonition-title::before,
+.md-typeset .anode > summary::before {
+  background-color: var(--color-anode);
+  -webkit-mask-image: var(--md-admonition-icon--note);
+          mask-image: var(--md-admonition-icon--note);
+}
+
+.md-typeset .admonition.electrolyte,
+.md-typeset details.electrolyte {
+  border-color: var(--color-electrolyte);
+}
+.md-typeset .electrolyte > .admonition-title,
+.md-typeset .electrolyte > summary {
+  background-color: rgba(39, 174, 96, 0.1);
+  border-color: var(--color-electrolyte);
+}
+.md-typeset .electrolyte > .admonition-title::before,
+.md-typeset .electrolyte > summary::before {
+  background-color: var(--color-electrolyte);
+  -webkit-mask-image: var(--md-admonition-icon--tip);
+          mask-image: var(--md-admonition-icon--tip);
+}
+
+.md-typeset .admonition.polarization,
+.md-typeset details.polarization {
+  border-color: var(--color-polarization);
+}
+.md-typeset .polarization > .admonition-title,
+.md-typeset .polarization > summary {
+  background-color: rgba(230, 126, 34, 0.1);
+  border-color: var(--color-polarization);
+}
+.md-typeset .polarization > .admonition-title::before,
+.md-typeset .polarization > summary::before {
+  background-color: var(--color-polarization);
+  -webkit-mask-image: var(--md-admonition-icon--warning);
+          mask-image: var(--md-admonition-icon--warning);
+}
+
+/* ============================================================
+   KaTeX 수식
+   ============================================================ */
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.5rem;
+  padding-top: 0.2rem;
+}
+
+.katex {
+  font-size: 1.05em;
+}
+
+/* 인라인 수식이 줄바꿈 시 어색해지는 것 방지 */
+.katex-html {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   코드 블록
+   ============================================================ */
+
+.md-typeset code {
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+.md-typeset pre > code {
+  font-size: 0.82em;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   테이블 — 좀 더 컴팩트
+   ============================================================ */
+
+.md-typeset table:not([class]) {
+  font-size: 0.85em;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+
+/* ============================================================
+   학습 추적 (Lab User) Modal
+   ============================================================ */
+
+.lab-user-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.lab-user-modal {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  padding: 1.8rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  font-family: var(--md-text-font);
+  animation: slideUp 0.25s ease-out;
+}
+
+.lab-user-modal h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+
+.lab-user-modal p {
+  margin: 0.4rem 0 1.2rem 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--light);
+}
+
+.lab-user-modal input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-family: var(--md-text-font);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.lab-user-modal input[type="text"]:focus {
+  outline: none;
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.15);
+}
+
+.lab-user-modal .lab-user-modal-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.lab-user-modal button {
+  font-family: var(--md-text-font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.05s;
+}
+
+.lab-user-modal button:active {
+  transform: translateY(1px);
+}
+
+.lab-user-modal .lab-user-btn-primary {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.lab-user-modal .lab-user-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.lab-user-modal .lab-user-btn-secondary {
+  background: transparent;
+  color: var(--md-default-fg-color--light);
+  border: 1px solid var(--md-default-fg-color--lighter);
+}
+
+.lab-user-modal .lab-user-btn-secondary:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   Pagefind UI 커스텀
+   ============================================================ */
+
+#pagefind-search {
+  margin-top: 1rem;
+}
+
+.pagefind-ui {
+  --pagefind-ui-primary: var(--md-primary-fg-color);
+  --pagefind-ui-text: var(--md-default-fg-color);
+  --pagefind-ui-background: var(--md-default-bg-color);
+  --pagefind-ui-border: var(--md-default-fg-color--lighter);
+  --pagefind-ui-tag: var(--md-default-fg-color--lightest);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 4px;
+  --pagefind-ui-font: var(--md-text-font);
+}
+
+/* ============================================================
+   모바일 미세 조정
+   ============================================================ */
+
+@media screen and (max-width: 600px) {
+  .md-content {
+    max-width: 100%;
+  }
+
+  .md-typeset {
+    font-size: 0.82rem;
+  }
+
+  .lab-user-modal {
+    padding: 1.4rem 1.4rem;
+  }
+}
+
+/* ============================================================
+   상단 탭 호버 드롭다운 (기초이론 / 실무이론)
+   nav-dropdown.js가 .has-dropdown / .tab-dropdown 요소를 주입
+   ============================================================ */
+
+/* Material의 .md-tabs는 overflow: hidden이라 드롭다운이 잘림 → 풀어준다 */
+.md-tabs,
+.md-tabs__list,
+.md-tabs__item {
+  overflow: visible !important;
+}
+
+/* 단, 모바일에서 가로 스크롤이 필요하면 list만 다시 hidden */
+@media screen and (max-width: 76.1875em) {
+  .md-tabs__list {
+    overflow-x: auto !important;
+  }
+}
+
+.md-tabs__item.has-dropdown {
+  position: relative;
+}
+
+.md-tabs__item.has-dropdown > .md-tabs__link::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.3rem;
+  font-size: 0.7em;
+  opacity: 0.7;
+  transition: transform 0.15s ease;
+}
+
+.md-tabs__item.has-dropdown:hover > .md-tabs__link::after {
+  transform: rotate(180deg);
+}
+
+.tab-dropdown {
+  position: absolute;
+  top: calc(100% - 2px);   /* 탭 하단과 드롭다운이 1-2px 겹치도록 → hover gap 방지 */
+  left: 0;
+  min-width: 14rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  /* 상단에 보이지 않는 padding을 두어 마우스 이동 중간 영역도 hover 유지 */
+  padding: 0.6rem 0 0.4rem 0;
+  margin-top: 0;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+  pointer-events: none;
+}
+
+/* hover 시 visibility 전환 지연 제거 → 즉시 표시 */
+.md-tabs__item.has-dropdown:hover .tab-dropdown,
+.md-tabs__item.has-dropdown:focus-within .tab-dropdown {
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0s;
+}
+
+.md-tabs__item.has-dropdown:hover .tab-dropdown,
+.md-tabs__item.has-dropdown:focus-within .tab-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.tab-dropdown__item {
+  display: block;
+  padding: 0.55rem 1rem;
+  color: var(--md-default-fg-color) !important;
+  text-decoration: none;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  border-left: 2px solid transparent;
+  transition: background 0.1s ease, border-color 0.1s ease;
+}
+
+.tab-dropdown__item:hover {
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-typeset-a-color) !important;
+  border-left-color: var(--md-typeset-a-color);
+}
+
+[data-md-color-scheme="slate"] .tab-dropdown {
+  background: var(--md-default-bg-color);
+  border-color: var(--md-default-fg-color--lightest);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* 기초이론 / 실무이론 라벨 (홈 페이지 등에서 사용) */
+.theory-group-label {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.theory-group-label.foundation {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+.theory-group-label.practical {
+  background: #fff3e0;
+  color: #bf360c;
+}
+[data-md-color-scheme="slate"] .theory-group-label.foundation {
+  background: rgba(100, 181, 246, 0.15);
+  color: #90caf9;
+}
+[data-md-color-scheme="slate"] .theory-group-label.practical {
+  background: rgba(255, 167, 38, 0.15);
+  color: #ffb74d;
+}

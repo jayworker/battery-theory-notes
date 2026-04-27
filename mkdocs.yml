@@ -1,0 +1,184 @@
+site_name: 이차전지 이론 학습 노트
+site_description: 연구실 입문자를 위한 전기화학·고체물리·DFT·통계역학·배터리 작동이론 통합 학습 자료
+site_author: Battery Theory Lab Notes
+
+# MkDocs 1.6 부터 docs_dir이 config 파일과 같은 디렉토리이거나 부모일 수 없음.
+# 그래서 콘텐츠는 루트에 두되, 빌드 전에 `docs/` 하위로 콘텐츠를 복사/링크하는
+# pre-build 스텝(`scripts/prepare_docs.py`)을 실행한다.
+# - 로컬:   `python scripts/prepare_docs.py && mkdocs serve`
+# - CI:     `.github/workflows/deploy.yml`이 자동 실행
+docs_dir: docs
+
+exclude_docs: |
+  README.md
+  design.md
+  deploy-guide.md
+  github-deploy-tutorial.md
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  font:
+    text: Noto Sans KR
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - 기초이론:
+      - 01 전기화학:
+          - Overview: 01_electrochemistry/00_overview.md
+          - 열역학: 01_electrochemistry/01_thermodynamics.md
+          - 속도론: 01_electrochemistry/02_kinetics.md
+          - 물질 전달: 01_electrochemistry/03_mass_transport.md
+          - 전기 이중층: 01_electrochemistry/04_double_layer.md
+          - EIS 기초: 01_electrochemistry/05_eis_fundamentals.md
+      - 02 고체:
+          - Overview: 02_solid_state/00_overview.md
+          - 결정 구조: 02_solid_state/01_crystal_structure.md
+          - 밴드 이론: 02_solid_state/02_band_theory.md
+          - 결함 화학: 02_solid_state/03_defect_chemistry.md
+          - 이온 전도: 02_solid_state/04_ionic_conduction.md
+          - 상평형: 02_solid_state/05_phase_diagrams.md
+      - 03 DFT:
+          - Overview: 03_quantum_dft/00_overview.md
+          - 양자역학 기초: 03_quantum_dft/01_quantum_basics.md
+          - DFT 기초: 03_quantum_dft/02_dft_foundations.md
+          - 교환-상관 범함수: 03_quantum_dft/03_exchange_correlation.md
+          - 실용 DFT: 03_quantum_dft/04_practical_dft.md
+          - 배터리 DFT: 03_quantum_dft/05_dft_battery.md
+      - 04 통계:
+          - Overview: 04_statistical_mechanics/00_overview.md
+          - 앙상블 이론: 04_statistical_mechanics/01_ensembles.md
+          - 분배 함수: 04_statistical_mechanics/02_partition_function.md
+          - 격자 모델: 04_statistical_mechanics/03_lattice_models.md
+          - 상전이 이론: 04_statistical_mechanics/04_phase_transitions.md
+          - 수송 이론: 04_statistical_mechanics/05_transport_theory.md
+      - 05 수학:
+          - Overview: 05_math_tools/00_overview.md
+          - ODE/PDE: 05_math_tools/01_ode_pde.md
+          - 선형대수: 05_math_tools/02_linear_algebra.md
+          - 복소해석·변환: 05_math_tools/03_complex_analysis.md
+          - 수치 해석: 05_math_tools/04_numerical_methods.md
+          - 데이터 분석: 05_math_tools/05_data_analysis.md
+  - 실무이론:
+      - 06 작동이론:
+          - Overview: 06_battery_operation/00_overview.md
+          - 충방전 곡선: 06_battery_operation/01_voltage_curves.md
+          - 분극 분해: 06_battery_operation/02_polarization.md
+          - 계면 현상: 06_battery_operation/03_interface.md
+          - 기계화학: 06_battery_operation/04_mechanochemistry.md
+          - 열 현상: 06_battery_operation/05_thermal.md
+          - 노화 메커니즘: 06_battery_operation/06_degradation.md
+          - Operando 기법: 06_battery_operation/07_operando.md
+          - 이상 현상: 06_battery_operation/08_anomalies.md
+      - 07 소재분석:
+          - Overview: 07_materials_analysis/00_overview.md
+          - XRD/Rietveld: 07_materials_analysis/01_xrd.md
+          - SEM/EDS: 07_materials_analysis/02_sem_eds.md
+          - TEM/STEM: 07_materials_analysis/03_tem.md
+          - XPS: 07_materials_analysis/04_xps.md
+          - Raman/FTIR: 07_materials_analysis/05_raman_ftir.md
+          - BET/PSA: 07_materials_analysis/06_bet_psa.md
+          - ICP/TGA: 07_materials_analysis/07_icp_tga.md
+      - 08 전기화학분석:
+          - Overview: 08_echem_analysis/00_overview.md
+          - CV: 08_echem_analysis/01_cv.md
+          - GCD/Rate: 08_echem_analysis/02_gcd_rate.md
+          - EIS 실전: 08_echem_analysis/03_eis_practical.md
+          - GITT/PITT: 08_echem_analysis/04_gitt_pitt.md
+          - 3-electrode: 08_echem_analysis/05_three_electrode.md
+          - LSV/Tafel: 08_echem_analysis/06_lsv_tafel.md
+          - Cycling protocols: 08_echem_analysis/07_cycling_protocols.md
+      - 09 고도분석:
+          - Overview: 09_advanced_analysis/00_overview.md
+          - Operando XRD: 09_advanced_analysis/01_operando_xrd.md
+          - XAS (XANES/EXAFS): 09_advanced_analysis/02_xas.md
+          - Cryo-EM: 09_advanced_analysis/03_cryo_em.md
+          - DEMS/OEMS: 09_advanced_analysis/04_dems_oems.md
+          - ssNMR: 09_advanced_analysis/05_ssnmr.md
+          - AFM/EC-AFM: 09_advanced_analysis/06_afm_ecafm.md
+          - ToF-SIMS: 09_advanced_analysis/07_tof_sims.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - admonition
+  - footnotes
+  - tables
+  - attr_list
+  - md_in_html
+  - def_list
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/@pagefind/default-ui@latest/npm/dist/pagefind-ui.css
+  - extra/stylesheets/extra.css
+
+extra_javascript:
+  - extra/javascripts/katex-init.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  - https://cdn.jsdelivr.net/npm/@pagefind/default-ui@latest/npm/dist/pagefind-ui.js
+  - extra/javascripts/search-init.js
+  - extra/javascripts/tracker.js
+  - extra/javascripts/nav-dropdown.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/
+  generator: false
+
+copyright: 이차전지 이론 학습 노트 · 2026

@@ -1,0 +1,39 @@
+# MkDocs 빌드 산출물
+site/
+docs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+.venv/
+venv/
+
+# Node (Pagefind, 기타 도구)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pagefind output (mkdocs build 후 site/ 안에 생성됨, site/ 와 함께 무시)
+pagefind/
+
+# 환경 변수 (혹시라도 추가될 경우)
+.env
+.env.local
+
+# 내부 작업 문서 (사이트·repo 둘 다 노출 불필요)
+design.md
+deploy-guide.md
+github-deploy-tutorial.md
+
+# 기획·플랜·메모 (개인 작업 기록, push 불필요)
+.omc/
