@@ -22,7 +22,7 @@ $$\boxed{L_{ij} = L_{ji}}$$
 
 이 대칭이 의미하는 것은 직관적이지 않다 — 농도 구배가 전류를 만들 때의 결합 계수가, 전위 구배가 입자 흐름을 만들 때의 결합 계수와 같다는 것. 아무 미시 모델 없이도 이런 비자명한 등식이 시간 반전 대칭만으로 보장된다. 외부 자기장이 있으면 $L_{ij}(\mathbf{B}) = L_{ji}(-\mathbf{B})$로 수정된다.
 
-배터리 응용에서 Onsager 관계는 농축 전해질의 transference number 정의와 모든 결합 수송 식의 일관성을 보장한다. Newman의 농축 전해질 모델([`../06_battery_operation/`](../06_battery_operation/) 시리즈에서 활용)이 이 framework 위에 세워져 있다.
+배터리 응용에서 Onsager 관계는 농축 전해질의 transference number 정의와 모든 결합 수송 식의 일관성을 보장한다. Newman의 농축 전해질 모델([`../06_battery_operation/00_overview.md`](../06_battery_operation/00_overview.md) 시리즈에서 활용)이 이 framework 위에 세워져 있다.
 
 ## 3. 요동-소산 정리 (FDT)
 

@@ -38,6 +38,9 @@ CONTENT_FILES: list[str] = []
 
 # 사이트 루트(`/`)로 매핑할 홈 페이지 소스
 HOME_SOURCE = "00_index.md"
+HOME_TRANSLATION_SOURCES = {
+    "en": "00_index.en.md",
+}
 
 # extra/ 자산 (CSS / JS) — mkdocs.yml의 `extra_css` / `extra_javascript` 와 일치
 EXTRA_DIRS = [
@@ -75,6 +78,12 @@ def copy_content() -> None:
     if home_src.is_file():
         shutil.copy2(home_src, DOCS_DIR / "index.md")
         print(f"  copied {HOME_SOURCE} -> index.md (site home)")
+
+    for locale, source in HOME_TRANSLATION_SOURCES.items():
+        translated_home = ROOT / source
+        if translated_home.is_file():
+            shutil.copy2(translated_home, DOCS_DIR / f"index.{locale}.md")
+            print(f"  copied {source} -> index.{locale}.md (site home, {locale})")
 
     for d in EXTRA_DIRS:
         src = ROOT / d

@@ -34,6 +34,7 @@ pagefind/
 design.md
 deploy-guide.md
 github-deploy-tutorial.md
+agent.md
 
 # 기획·플랜·메모 (개인 작업 기록, push 불필요)
 .omc/

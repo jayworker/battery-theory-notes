@@ -391,10 +391,28 @@
    ============================================================ */
 
 /* 7번째 탭(06 작동이론) 앞에 세로 divider — 기초/실무 경계 */
+.md-tabs {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.md-tabs__list {
+  min-width: max-content;
+}
+
+.md-tabs__item {
+  flex: 0 0 auto;
+}
+
+.md-tabs__link {
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
 .md-tabs__list .md-tabs__item:nth-child(7) {
   position: relative;
-  margin-left: 0.6rem;
-  padding-left: 0.6rem;
+  margin-left: 0.45rem;
+  padding-left: 0.45rem;
 }
 
 .md-tabs__list .md-tabs__item:nth-child(7)::before {
@@ -412,6 +430,167 @@
 @media screen and (max-width: 76.1875em) {
   .md-tabs__list {
     overflow-x: auto;
+  }
+}
+
+/* ============================================================
+   언어 전환 — 항상 보이는 segmented toggle (KO ↔ EN)
+   - 현재 언어: 채워진 pill (primary-bg)
+   - 다른 언어: 투명 pill, 호버 시 살짝 강조
+   - 한 번 클릭으로 즉시 전환 (드롭다운 X)
+   ============================================================ */
+
+.md-header__option[data-md-component="palette"] {
+  margin-left: 0.25rem;
+}
+
+/* 언어 옵션은 그 옆에서 명확히 분리 */
+.md-header__option:not([data-md-component="palette"]) {
+  margin-left: 0.45rem;
+  margin-right: 0.6rem;     /* 검색 아이콘과 간격 확보 */
+  display: flex;
+  align-items: center;
+}
+
+/* Material이 만드는 globe 트리거 버튼은 숨김 — segmented가 자체 라벨 역할 */
+.md-header__option .md-select > .md-header__button {
+  display: none;
+}
+
+/* dropdown panel(.md-select__inner)을 inline segmented pill로 강제 변환 */
+.md-header__option .md-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.md-header__option .md-select .md-select__inner {
+  position: static !important;
+  top: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 2px !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: none !important;       /* Material 기본 max-height: 0 해제 */
+  overflow: visible !important;      /* 스크롤바 트랙 제거 */
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transition: none !important;
+}
+
+/* Material이 그리는 위쪽 삼각형 caret 제거 */
+.md-header__option .md-select .md-select__inner::before,
+.md-header__option .md-select .md-select__inner::after {
+  display: none !important;
+  content: none !important;
+}
+
+[data-md-color-scheme="slate"] .md-header__option .md-select .md-select__inner {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.md-header__option .md-select__list {
+  display: inline-flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1px;
+  overflow: visible !important;       /* Material .md-select__list overflow:auto 제거 */
+  max-height: none !important;
+}
+
+.md-header__option .md-select__item {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* 각 언어 링크 — segmented control의 한 칸 */
+.md-header__option .md-select__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.1rem;
+  height: 1.5rem;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  font-size: 0;                  /* 원래 텍스트("한국어"/"English") 숨김 */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--md-primary-bg-color);
+  opacity: 0.62;
+  background: transparent;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 160ms ease, opacity 160ms ease,
+              color 160ms ease, transform 80ms ease;
+}
+
+/* 한국어/English 라벨을 KO/EN 코드로 치환 */
+.md-header__option .md-select__link[hreflang="ko"]::before {
+  content: "KO";
+  font-size: 0.68rem;
+}
+
+.md-header__option .md-select__link[hreflang="en"]::before {
+  content: "EN";
+  font-size: 0.68rem;
+}
+
+/* 비활성 항목 호버 — 살짝 밝아짐 */
+.md-header__option .md-select__link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.md-header__option .md-select__link:active {
+  transform: scale(0.96);
+}
+
+/* 활성 언어 — 흰 배경 + primary 컬러 텍스트 */
+html[lang="ko"] .md-header__option .md-select__link[hreflang="ko"],
+html[lang="en"] .md-header__option .md-select__link[hreflang="en"] {
+  background: var(--md-primary-bg-color);
+  color: var(--md-primary-fg-color);
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18),
+              0 0 0 0.5px rgba(0, 0, 0, 0.04);
+  cursor: default;
+}
+
+/* 활성 언어 호버 — 변화 최소화 (현재 언어임을 안정적으로 표시) */
+html[lang="ko"] .md-header__option .md-select__link[hreflang="ko"]:hover,
+html[lang="en"] .md-header__option .md-select__link[hreflang="en"]:hover {
+  background: var(--md-primary-bg-color);
+  color: var(--md-primary-fg-color);
+  opacity: 1;
+}
+
+/* 키보드 포커스 — 접근성 */
+.md-header__option .md-select__link:focus-visible {
+  outline: 2px solid var(--md-primary-bg-color);
+  outline-offset: 2px;
+}
+
+/* 모바일 — 살짝 더 컴팩트하게 */
+@media screen and (max-width: 600px) {
+  .md-header__option .md-select__link {
+    min-width: 1.85rem;
+    height: 1.4rem;
+    padding: 0 0.45rem;
+  }
+  .md-header__option .md-select__link[hreflang="ko"]::before,
+  .md-header__option .md-select__link[hreflang="en"]::before {
+    font-size: 0.62rem;
   }
 }
 

@@ -36,7 +36,6 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
-    - navigation.instant
     - navigation.tracking
     - navigation.top
     - navigation.indexes
@@ -154,6 +153,70 @@ markdown_extensions:
       toc_depth: 3
 
 plugins:
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: ko
+          name: 한국어
+          build: true
+          default: true
+          site_name: 이차전지 이론 학습 노트
+          site_description: 연구실 입문자를 위한 전기화학·고체물리·DFT·통계역학·배터리 작동이론 통합 학습 자료
+        - locale: en
+          name: English
+          build: true
+          site_name: Battery Theory Study Notes
+          site_description: Integrated study notes on electrochemistry, solid-state physics, DFT, statistical mechanics, and battery operation for new researchers.
+          nav_translations:
+            Home: Home
+            01 전기화학: 01 Electrochem
+            열역학: Thermodynamics
+            속도론: Kinetics
+            물질 전달: Mass Transport
+            전기 이중층: Electric Double Layer
+            EIS 기초: EIS Fundamentals
+            02 고체: 02 Solid State
+            결정 구조: Crystal Structure
+            밴드 이론: Band Theory
+            결함 화학: Defect Chemistry
+            이온 전도: Ionic Conduction
+            상평형: Phase Diagrams
+            03 DFT: 03 DFT
+            양자역학 기초: Quantum Basics
+            DFT 기초: DFT Foundations
+            교환-상관 범함수: Exchange-Correlation Functionals
+            실용 DFT: Practical DFT
+            배터리 DFT: Battery DFT
+            04 통계: 04 Stat Mech
+            앙상블 이론: Ensemble Theory
+            분배 함수: Partition Function
+            격자 모델: Lattice Models
+            상전이 이론: Phase Transitions
+            수송 이론: Transport Theory
+            05 수학: 05 Math Tools
+            선형대수: Linear Algebra
+            복소해석·변환: Complex Analysis & Transforms
+            수치 해석: Numerical Methods
+            데이터 분석: Data Analysis
+            06 작동이론: 06 Operation
+            충방전 곡선: Charge-Discharge Curves
+            분극 분해: Polarization Analysis
+            계면 현상: Interfacial Phenomena
+            기계화학: Mechanochemistry
+            열 현상: Thermal Phenomena
+            노화 메커니즘: Degradation Mechanisms
+            Operando 기법: Operando Methods
+            이상 현상: Anomalies
+            07 소재분석: 07 Materials
+            소재분석: Materials Analysis
+            08 전기화학분석: 08 Echem
+            전기화학분석: Electrochemical Analysis
+            EIS 실전: Practical EIS
+            09 고도분석: 09 Advanced
+            고도분석: Advanced Analysis
   - search:
       lang:
         - ko
