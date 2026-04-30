@@ -1,6 +1,7 @@
 site_name: 이차전지 이론 학습 노트
 site_description: 연구실 입문자를 위한 전기화학·고체물리·DFT·통계역학·배터리 작동이론 통합 학습 자료
 site_author: Battery Theory Lab Notes
+site_url: https://jayworker.github.io/battery-theory-notes/
 
 # MkDocs 1.6 부터 docs_dir이 config 파일과 같은 디렉토리이거나 부모일 수 없음.
 # 그래서 콘텐츠는 루트에 두되, 빌드 전에 `docs/` 하위로 콘텐츠를 복사/링크하는
