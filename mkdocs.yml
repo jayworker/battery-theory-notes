@@ -239,7 +239,7 @@ extra_javascript:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/
+      link: https://github.com/jayworker/battery-theory-notes
   generator: false
 
 copyright: 이차전지 이론 학습 노트 · 2026

@@ -2,7 +2,17 @@
 
 이 디렉토리는 **이차전지 소재 연구 대학원생을 위한 이론 학습 노트**다. 6개 영역 33개 본문 마크다운 파일로 구성되어 있으며, Claude Code(또는 다른 LLM 도구)로 점진적으로 추가·수정·보강하기 위한 작업 가이드를 정리한다.
 
-> **사용자 안내가 아닌 "작업자/Claude" 안내 문서.** 학습용 진입점은 [`00_index.md`](./00_index.md).
+## 사이트로 이동
+
+학습 노트는 MkDocs Material 테마로 빌드되어 GitHub Pages에 배포되어 있다.
+
+- **한국어:** <https://jayworker.github.io/battery-theory-notes/>
+- **English:** <https://jayworker.github.io/battery-theory-notes/en/>
+
+[![Site](https://img.shields.io/badge/site-battery--theory--notes-blue)](https://jayworker.github.io/battery-theory-notes/)
+[![MkDocs Material](https://img.shields.io/badge/MkDocs-Material-526CFE?logo=materialformkdocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+
+> **사용자 안내가 아닌 "작업자/Claude" 안내 문서.** 학습용 진입점은 위 웹사이트 또는 로컬 [`00_index.md`](./00_index.md).
 
 ---
 
